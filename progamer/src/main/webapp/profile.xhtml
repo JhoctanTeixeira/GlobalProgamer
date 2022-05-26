@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:card style="width: 25em; margin: 1em auto">
+
+			<p>Perfil</p>
+			<p:dataTable var="user" value="#{userBean.listAll()}" editable="true">
+
+				<p:column style="width: 30%;">
+					<img src="#{request.contextPath}#{user.imagePath}"/>
+				</p:column>
+
+				<p:column style="width: 70%;">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.name}" style="font-size: 20px" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{user.name}" style="font-size: 20px" />
+						</f:facet>
+					</p:cellEditor>
+					<h:outputText value="#{user.email}" />
+					<br/>
+					<h:outputText value="#{user.birthday}" />
+					
+
+
+				</p:column>
+				
+
+			</p:dataTable>
+
+		</p:card>
+	</ui:define>
+</ui:composition>
+
+
+</html>
